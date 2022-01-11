@@ -1,0 +1,23 @@
+{
+  "name": "social-network-api-build",
+  "version": "1.0.0",
+  "description": "An assignment where a social network api is built.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zachary-berdell-elliott/social-network-api-build.git"
+  },
+  "author": "Zachary Elliott",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zachary-berdell-elliott/social-network-api-build/issues"
+  },
+  "homepage": "https://github.com/zachary-berdell-elliott/social-network-api-build#readme",
+  "dependencies": {
+    "mongoose": "^6.1.6"
+  }
+}
