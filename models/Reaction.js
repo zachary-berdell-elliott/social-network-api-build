@@ -1,6 +1,6 @@
 const { Schema, Types } = require('mongoose');
 
-const rectionSchema = new Schema(
+const reactionSchema = new Schema(
     {
         reactionId: {
             type: Schema.Types.ObjectId,
@@ -20,5 +20,13 @@ const rectionSchema = new Schema(
             default: Date.now,
             get: d => d.toLocaleDateString('en-us', {year: "numeric", month: "2-digit", day: "2-digit"})
         }
+    },
+    {
+        toJSON: {
+            getters: true
+        },
+        id: false
     }
-)
+);
+
+module.exports = reactionSchema;
