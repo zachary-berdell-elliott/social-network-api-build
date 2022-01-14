@@ -42,7 +42,7 @@ module.exports = {
             .catch(err => res.status(500).json(err));
     },
     removeFriend(req, res) {
-        User.findOneAndUpdate(
+        User.findOneAndDelete(
             {_id: req.params.userId},
             {$pull: {friend: {friendId: req.params.friendId}}},
             {runValidators: true, new: true}

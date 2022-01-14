@@ -14,6 +14,13 @@ module.exports = {
     },
     createThought(req, res) {
         Thought.create(req.body)
+            .then(userArray => {
+                return User.findOneAndUpdate(
+                    {_id: req.body.userId},
+                    {$push: {thoughts: userArray._id}},
+                    {new: true}
+                )
+            })
             .then(thought => res.json(thought))
             .catch(err => res.status(500).json(err));
     },
@@ -32,5 +39,23 @@ module.exports = {
         Thought.findOneAndDelete({_id: req.params.thoughtId})
             .then(thought => !thought ? res.status(404).json({message: "This thought does not exist."}) : res.json(thought))
             .catch(err => res.status(500).json(err));
+    },
+    addReaction(req, res) {
+        Thought.findOneAndUpdate(
+            {__id: req.params.thoughtId},
+            {$addToSet: {reactions: req.body}},
+            {runValidators: true, new: true}
+        )
+        .then(thought => !thought ? res.status(404).json({message: "This thought does not exist."}) : res.json(thought))
+        .catch(err => res.status(500).json(err));
+    },
+    removeReaction(req, res) {
+        Thought.findOneAndDelete(
+            {_id: req.params.thoughtId},
+            {$pull: {reaction: {reactionId: req.params.reactionId}}},
+            {runValidators: true, new: true}
+        )
+        .then(thought => !thought ? res.status(404).json({message: "This thought does not exist."}) : res.json(thought))
+        .catch(err => res.status(500).json(err));
     }
 }
