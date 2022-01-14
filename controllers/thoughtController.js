@@ -52,7 +52,7 @@ module.exports = {
     removeReaction(req, res) {
         Thought.findOneAndDelete(
             {_id: req.params.thoughtId},
-            {$pull: {reaction: {reactionId: req.params.reactionId}}},
+            {$pull: {reactions: {_id: req.params.reactionId}}},
             {runValidators: true, new: true}
         )
         .then(thought => !thought ? res.status(404).json({message: "This thought does not exist."}) : res.json(thought))

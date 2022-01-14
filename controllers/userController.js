@@ -44,7 +44,7 @@ module.exports = {
     removeFriend(req, res) {
         User.findOneAndDelete(
             {_id: req.params.userId},
-            {$pull: {friend: {friendId: req.params.friendId}}},
+            {$pull: {friends: {$in: req.params.friendId}}},
             {runValidators: true, new: true}
         )
             .then(user => !user ? res.status(404).json({message: "This user does not exist"}) : res.json(user))
