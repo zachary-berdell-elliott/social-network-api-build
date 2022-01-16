@@ -42,9 +42,9 @@ module.exports = {
             .catch(err => res.status(500).json(err));
     },
     removeFriend(req, res) {
-        User.findOneAndDelete(
+        User.findOneAndUpdate(
             {_id: req.params.userId},
-            {$pull: {friends: {$in: req.params.friendId}}},
+            {$pull: {friends: req.params.friendId}},
             {runValidators: true, new: true}
         )
             .then(user => !user ? res.status(404).json({message: "This user does not exist"}) : res.json(user))
