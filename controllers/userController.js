@@ -1,3 +1,4 @@
+const { is } = require('express/lib/request');
 const { User, Thought } = require('../models');
 
 module.exports = {
@@ -28,9 +29,18 @@ module.exports = {
     },
     deleteUser(req, res) {
         User.findOneAndDelete({_id: req.params.userId})
-            .then(user => !user ? res.status(404).json({message: "This user does not exist"}): Thought.deleteMany({_id: {$in: user.thoughts}}))
-            .then(() => res.json({message: "The user and associated thoughts have been deleted."}))
-            .catch(err => res.staus(500).json(err));
+            .then(user => {
+                if(!user) res.status(404).json({message: "This user does not exist"})
+                else {
+                    console.log(user);
+                    user.thoughts.forEach(thought => {
+                        console.log(thought)
+                        Thought.deleteOne({_id: thought}, err => {if (err) throw err})
+                    }); 
+                    res.json({message: "The user and associated thoughts have been deleted."})
+                }
+            })
+            .catch(err => res.status(500).json(err));
     },
     addFriend(req, res) {
         User.findOneAndUpdate(
