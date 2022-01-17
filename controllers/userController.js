@@ -1,4 +1,3 @@
-const { is } = require('express/lib/request');
 const { User, Thought } = require('../models');
 
 module.exports = {
