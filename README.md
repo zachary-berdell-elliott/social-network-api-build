@@ -1,7 +1,7 @@
 # Social Media Backend [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
-This is an assignment where the backend of a social meadia site was built. It uses Mongodb, Mongoose, NodeJS, and ExpressJS. [The video demonstration can be viewed here.](https://drive.google.com/file/d/1w0sXd_5CWbDUJRZKrdi6nZ4x4r1XL_0F/view?usp=sharing)
+This is an assignment where the backend of a social media site was built. It uses Mongodb, Mongoose, NodeJS, and ExpressJS. [The video demonstration can be viewed here.](https://drive.google.com/file/d/1w0sXd_5CWbDUJRZKrdi6nZ4x4r1XL_0F/view?usp=sharing)
 
 ![Image of the api routes being tested in insomnia.](./assets/social-network-image.png)
 
