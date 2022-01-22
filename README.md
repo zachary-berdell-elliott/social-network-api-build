@@ -32,7 +32,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 This application can be contributed to by reaching out to me over email. You can report any bugs directly to me or ask for contribution permissions.
 
 ## Tests 
-This application can be tested by installing it then trying out the diiferent api routes.
+This application can be tested by installing it then trying out the different api routes.
 
 ## Questions 
 FAQ: 
